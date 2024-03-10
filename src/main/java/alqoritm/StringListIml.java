@@ -11,6 +11,7 @@ public class StringListIml implements  StringList {
     public final String[] array;
     private int size;
 
+
     public StringListIml() {
         array = new String[10];
     }
@@ -119,6 +120,7 @@ public class StringListIml implements  StringList {
     @Override
     public void clear() {
         size = 0;
+
 
     }
 

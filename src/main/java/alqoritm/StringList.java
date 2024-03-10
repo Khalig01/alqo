@@ -4,10 +4,15 @@ import exception.ArrayIsFullException;
 import exception.InvalidIndexException;
 import exception.NullElementException;
 
+import java.io.OptionalDataException;
+
+//import static jdk.internal.jrtfs.JrtFileAttributeView.AttrID.size;
+
+
 public interface StringList {
     String add(String item);
 
-    @Override
+
     String add(int index, String item);
 
     String set(int index, String item);
@@ -41,13 +46,11 @@ public interface StringList {
     }
 
     default void validateSize() {
-        if (size == array.length) {
-            throw new ArrayIsFullException();
-        }
+    //    if (size == size.lenght);
     }
 
     default void validateIndex(int index) {
-        if (index < 0 || index > size) {
+        if ((index < 0) || (index > size())) {
             throw new InvalidIndexException();
         }
     }
