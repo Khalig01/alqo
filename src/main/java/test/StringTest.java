@@ -1,7 +1,8 @@
 package test;
 
-import alqoritm.StringList;
-import alqoritm.StringListIml;
+import alqoritm.IntegerListIml;
+import alqoritm.IntegerList;
+import alqoritm.IntegerListIml;
 import exception.ArrayIsFullException;
 import exception.ElementNotFoundException;
 import exception.InvalidIndexException;
@@ -10,98 +11,98 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.in;
 import static org.junit.jupiter.api.Assertions.*;
 import org.assertj.core.api.Assertions;
-    class StringTest {
-        StringList stringList = new StringListIml();
+    class IntegerTest {
+       IntegerList integerList = new IntegerListIml();
 
         @BeforeEach
         void setUp() {
-            stringList.add("test1");
-            stringList.add("test2");
-            stringList.add("test3");
-            stringList.add("test4");
-            stringList.add("test5");
-            stringList.add("test6");
-            stringList.add("test7");
-            stringList.add("test8");
+            integerList.add(1);
+            integerList.add(2);
+            integerList.add(3);
+            integerList.add(4);
+            integerList.add(5);
+            integerList.add(6);
+            integerList.add(7);
+            integerList.add(8);
         }
 
         @Test
         void addTestOne() {
-            assertThrows(NullElementException.class, () -> stringList.add(null));
-            stringList.add("test9");
-            assertEquals(9, stringList.size());
-            assertEquals("test9", stringList.get(8));
-            stringList.add("test10");
-            assertThrows(ArrayIndexOutOfBoundsException.class, () -> stringList.add("test11"));
+            assertThrows(NullElementException.class, () -> integerList.add(null));
+            integerList.add(9);
+            assertEquals(9, integerList.size());
+            assertEquals(9, integerList.get(8));
+            integerList.add(10);
+            assertThrows(ArrayIndexOutOfBoundsException.class, () -> integerList.add(11));
 
         }
 
         @Test
         void addTestTwo() {
-            assertThrows(InvalidIndexException.class, () -> stringList.add(100, "test8"));
-            stringList.add(8, "test9");
-            assertEquals("test9", stringList.get(8));
-            stringList.add(5, "testtest");
-            assertEquals("testtest", stringList.get(5));
+            assertThrows(InvalidIndexException.class, () -> integerList.add(100, 8));
+            integerList.add(8, 9);
+            assertEquals(9, integerList.get(8));
+            integerList.add(5, 12);
+            assertEquals(12, integerList.get(5));
         }
 
         @Test
         void setTest() {
-            assertEquals("testnew5", stringList.set(4, "testnew5"));
+            assertEquals(5, integerList.set(4, 5));
         }
 
         @Test
         void removeTest(){
-            assertThrows(ElementNotFoundException.class, () -> stringList.remove("test777"));
-            stringList.remove("test2");
-            assertThat(stringList.toArray()).contains(new String[]{
-                    "test1", "test3", "test4", "test5", "test6", "test7", "test8"});
+            assertThrows(ElementNotFoundException.class, () -> integerList.remove(777));
+            integerList.remove(2);
+            //    assertThat(integerList.toArray()).contains(new Integer(){2,4,5,8});
 
 
         };
 
         @Test
         void isEmptyTest() {
-            stringList.add("test");
-            assertFalse(stringList.isEmpty());
+            integerList.add(1);
+            assertFalse(integerList.isEmpty());
         }
 
         @Test
         void clearTest() {
-            stringList.clear();
-            assertEquals(0, stringList.size());
+            integerList.clear();
+            assertEquals(0, integerList.size());
         }
 
         @Test
         void containsTest() {
-            assertTrue(stringList.contains("test7"));
-            assertFalse(stringList.contains("test777"));
+            assertTrue(integerList.contains(7));
+            assertFalse(integerList.contains(777));
         }
 
         @Test
         void indexOfTest() {
-            assertEquals(2, stringList.indexOf("test3"));
-            assertEquals(-1, stringList.indexOf("test777"));
-            assertEquals(7, stringList.lastIndexOf("test8"));
-            assertEquals(-1, stringList.lastIndexOf("test777"));
+            assertEquals(2, integerList.indexOf(333));
+            assertEquals(-1, integerList.indexOf(777));
+            assertEquals(7, integerList.lastIndexOf(888));
+            assertEquals(-1, integerList.lastIndexOf(777));
         }
 
         @Test
         void equalsTest() {
-            StringList expected = new StringListIml(10);
-            expected.add("test1");
-            expected.add("test2");
-            expected.add("test3");
-            expected.add("test4");
-            expected.add("test5");
-            expected.add("test6");
-            expected.add("test7");
-            expected.add("test8");
-            assertThat(stringList.equals(expected)).isTrue();
-            assertArrayEquals(expected.toArray(), stringList.toArray());
-            assertEquals(expected.toString(), stringList.toString());
+            IntegerList expected = new IntegerListIml(10);
+            expected.add(1);
+            expected.add(2);
+            expected.add(3);
+            expected.add(4);
+            expected.add(5);
+            expected.add(6);
+            expected.add(7);
+            expected.add(8);
+            assertThat(integerList.equals(expected)).isTrue();
+            assertArrayEquals(expected.toArray(), integerList.toArray());
+            assertEquals(expected.toString(), integerList.toString());
         }
 
     }

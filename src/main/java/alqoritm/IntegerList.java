@@ -1,35 +1,32 @@
 package alqoritm;
 
-import exception.ArrayIsFullException;
 import exception.InvalidIndexException;
 import exception.NullElementException;
-
-import java.io.OptionalDataException;
 
 //import static jdk.internal.jrtfs.JrtFileAttributeView.AttrID.size;
 
 
-public interface StringList {
-    String add(String item);
+public interface IntegerList {
+    Integer add(Integer item);
 
 
-    String add(int index, String item);
+    Integer add(int index, Integer item);
 
-    String set(int index, String item);
+    Integer set(int index, Integer item);
 
-    String remove(String item);
+    Integer remove(Integer item);
 
-    String remove(int index);
+    Integer remove(int index);
 
-    boolean contains(String item);
+    boolean contains(Integer item);
 
-    int indexOf(String item);
+    int indexOf(Integer item);
 
-    int lastIndexOf(String item);
+    int lastIndexOf(Integer item);
 
-    String get(int index);
+    Integer get(int index);
 
-    boolean equals(StringList otherList);
+    boolean equals(IntegerList otherList);
 
     int size();
 
@@ -37,9 +34,9 @@ public interface StringList {
 
     void clear();
 
-    String[] toArray();
+    Integer[] toArray();
 
-    default void validateElement(String element) {
+    default void validateElement(Integer element) {
         if (element == null) {
             throw new NullElementException();
         }
